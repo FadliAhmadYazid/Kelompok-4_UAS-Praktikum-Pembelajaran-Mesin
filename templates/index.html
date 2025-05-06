@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Alas Kaki | AI Vision</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>
+                    <span class="logo-icon"><i class="fas fa-shoe-prints"></i></span>
+                    <span class="text-gradient">Klasifikasi Alas Kaki</span>
+                </h1>
+                <p class="subtitle">Sistem Pengenalan Alas Kaki dengan <span class="highlight">Artificial Intelligence</span></p>
+                <div class="header-particles"></div>
+            </div>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="card">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Gambar</h2>
+                    <p>Unggah gambar alas kaki dan sistem AI kami akan mengklasifikasikannya sebagai Boot, Sandal, atau Sepatu.</p>
+                    
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="file-input-wrapper" id="dropZone">
+                            <label for="file" class="file-label">
+                                <i class="fas fa-camera"></i>
+                                <span class="file-text">Pilih Gambar</span>
+                            </label>
+                            <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png, .webp, .jfif" class="file-input">
+                            <span id="fileName" class="file-name">Belum ada file yang dipilih</span>
+                            <div class="drag-instruction">
+                                <i class="fas fa-hand-point-up"></i>
+                                <span>Atau seret dan lepas gambar di sini</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-predict">
+                            <i class="fas fa-brain"></i> Analisis Gambar
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <div class="card">
+                    <h2><i class="fas fa-image"></i> Preview Gambar</h2>
+                    <div class="image-preview-container">
+                        <img id="imagePreview" class="image-preview" src="/static/img/placeholder.png" alt="Preview gambar">
+                        <div id="noImageMessage" class="no-image-message">
+                            <i class="fas fa-image fa-3x"></i>
+                            <p>Belum ada gambar yang dipilih</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resultSection" class="result-section">
+                <div class="card">
+                    <h2><i class="fas fa-chart-pie"></i> Hasil Analisis AI</h2>
+                    <div id="loadingIndicator" class="loading-indicator">
+                        <div class="spinner"></div>
+                        <p>Menjalankan analisis kecerdasan buatan...</p>
+                    </div>
+                    
+                    <div id="resultContent" class="result-content">
+                        <div class="result-main">
+                            <div class="prediction-badge" id="predictionBadge">
+                                <i class="prediction-icon"></i>
+                                <span id="className">Boot</span>
+                                <div class="confidence-pill" id="confidencePill">
+                                    <span id="confidenceScore">95%</span>
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-details">
+                            <h3>Probabilitas per Kelas</h3>
+                            <div id="probBars" class="prob-bars">
+                                <!-- Bars will be added dynamically with JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div id="interpretation" class="interpretation">
+                            <h3>Interpretasi AI</h3>
+                            <p id="interpretationText">Model sangat yakin bahwa gambar ini adalah Boot.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="info-section">
+            <div class="card">
+                <h2><i class="fas fa-robot"></i> Tentang Model AI</h2>
+                <div class="model-info">
+                    <div class="info-item">
+                        <h3><i class="fas fa-microchip"></i> Arsitektur</h3>
+                        <p>CNN dengan 3 layer konvolusi</p>
+                    </div>
+                    <div class="info-item">
+                        <h3><i class="fas fa-chart-line"></i> Akurasi</h3>
+                        <p>96.84% pada data test</p>
+                    </div>
+                    <div class="info-item">
+                        <h3><i class="fas fa-database"></i> Dataset</h3>
+                        <p>15,000 gambar alas kaki</p>
+                    </div>
+                </div>
+                
+                <div class="model-classes">
+                    <h3>Kelas yang Dapat Dikenali</h3>
+                    <div class="class-items">
+                        <div class="class-item boot-item">
+                            <div class="class-icon">👢</div>
+                            <div class="class-name">Boot</div>
+                            <div class="class-desc">Alas kaki tinggi yang menutupi kaki hingga betis atau lutut</div>
+                        </div>
+                        <div class="class-item sandal-item">
+                            <div class="class-icon">👡</div>
+                            <div class="class-name">Sandal</div>
+                            <div class="class-desc">Alas kaki terbuka dengan tali atau strap</div>
+                        </div>
+                        <div class="class-item shoe-item">
+                            <div class="class-icon">👟</div>
+                            <div class="class-name">Sepatu</div>
+                            <div class="class-desc">Alas kaki tertutup untuk aktivitas sehari-hari</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shoe-prints"></i>
+                    <span>Klasifikasi Alas Kaki</span>
+                </div>
+                <p>Dikembangkan oleh Kelompok 4 untuk UAS Praktikum Pembelajaran Mesin</p>
+                <p>&copy; 2025 Klasifikasi Alas Kaki | Powered by Artificial Intelligence</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</div>
+</body>
+</html>
