@@ -51,7 +51,7 @@ Pastikan Python versi 3.8 atau lebih tinggi telah terinstal pada sistem Anda.
 1. Clone repositori ini:
    ```bash
    git clone https://github.com/FadliAhmadYazid/Kelompok-4_UAS-Praktikum-Pembelajaran-Mesin.git
-   cd klasifikasi-alas-kaki
+   cd Kelompok-4_UAS-Praktikum-Pembelajaran-Mesin
    ```
    
 2. Buat virtual environment Python:
