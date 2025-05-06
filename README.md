@@ -25,30 +25,7 @@ Proyek ini mengimplementasikan sistem klasifikasi alas kaki menggunakan Convolut
 - **Backend**: FastAPI, TensorFlow, Keras
 - **Frontend**: HTML, CSS, JavaScript
 
-## Instruksi Penerapan
-
-### Persyaratan Sistem
-Pastikan Python versi 3.8 atau lebih tinggi telah terinstal pada sistem Anda.
-
-### Instalasi Dependensi
-1. Buat virtual environment Python:
-```bash
-# Pada Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Pada macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
-
-2. Install semua dependensi dari requirements.txt:
-```bash
-pip install -r requirements.txt
-```
-
 ### Struktur Direktori
-Pastikan struktur direktori proyek Anda seperti berikut:
 ```
 project/
 ├── app.py
@@ -65,23 +42,40 @@ project/
     └── model_2_cnn_shoe_sandal_boot.h5
 ```
 
+## Instruksi Penerapan
+
+### Persyaratan Sistem
+Pastikan Python versi 3.8 atau lebih tinggi telah terinstal pada sistem Anda.
+
 ### Langkah-langkah Penerapan
 1. Clone repositori ini:
    ```bash
-   git clone https://github.com/username/klasifikasi-alas-kaki.git
+   git clone https://github.com/FadliAhmadYazid/Kelompok-4_UAS-Praktikum-Pembelajaran-Mesin.git
    cd klasifikasi-alas-kaki
    ```
+   
+2. Buat virtual environment Python:
+```bash
+# Pada Windows
+python -m venv venv
+venv\Scripts\activate
 
-2. Unduh model terlatih:
-   - Pastikan file model `model_2_cnn_shoe_sandal_boot.h5` berada di folder `model/`
-   - Jika belum ada, Anda dapat melatih model menggunakan notebook yang disediakan atau mengunduh dari [link repository]
+# Pada macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
 
-3. Jalankan aplikasi:
+3. Install semua dependensi dari requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+
+4. Jalankan aplikasi:
    ```bash
    python app.py
    ```
 
-4. Akses aplikasi web:
+5. Akses aplikasi web:
    - Buka browser dan kunjungi `http://localhost:8000`
 
 ### Penggunaan Aplikasi
