@@ -1,6 +1,6 @@
 # Klasifikasi Alas Kaki dengan CNN
 
-## Anggota Tim
+## Kelompok 4
 1. Alhusna Hanifah - 2208107010060
 2. Fadli Ahmad Yazid - 2208107010032
 3. Nurul Uzratun Nashriyyah - 2208107010030
