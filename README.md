@@ -55,20 +55,20 @@ Pastikan Python versi 3.8 atau lebih tinggi telah terinstal pada sistem Anda.
    ```
    
 2. Buat virtual environment Python:
-```bash
-# Pada Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Pada macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
+    ```bash
+    # Pada Windows
+    python -m venv venv
+    venv\Scripts\activate
+    
+    # Pada macOS/Linux
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
 3. Install semua dependensi dari requirements.txt:
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 4. Jalankan aplikasi:
    ```bash
