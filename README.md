@@ -1,3 +1,5 @@
+Link repositori GitHub: https://github.com/FadliAhmadYazid/Kelompok-4_UAS-Praktikum-Pembelajaran-Mesin.git
+
 # Klasifikasi Alas Kaki dengan CNN
 
 ## Kelompok 4
@@ -14,7 +16,7 @@ Proyek ini mengimplementasikan sistem klasifikasi alas kaki menggunakan Convolut
 - Klasifikasi gambar alas kaki ke dalam tiga kategori
 - Visualisasi probabilitas prediksi untuk setiap kelas
 - Antarmuka web yang responsif dan user-friendly
-- Sistem upload gambar dengan drag and drop
+- Sistem upload gambar dengan berbagai format
 
 ### Performa Model
 - Arsitektur: CNN dengan 3 layer konvolusi
