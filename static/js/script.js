@@ -335,16 +335,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayResults(result) {
         // Update kelas prediksi
         className.textContent = result.predicted_class;
-
+    
         // Set icon berdasarkan predicted class
         updatePredictionIcon(result.predicted_class);
-
+    
         // Update confidence score
         const confidencePercentage = (result.confidence * 100).toFixed(2);
         confidenceScore.textContent = `${confidencePercentage}%`;
-
-        // Set warna berdasarkan confidence
-        if (result.confidence > 0.9) {
+    
+        // Set warna dan ikon berdasarkan confidence
+        if (result.predicted_class === "Unknown") {
+            confidencePill.style.color = 'gray';
+            confidencePill.innerHTML = `<span id="confidenceScore">${confidencePercentage}%</span> <i class="fas fa-question-circle"></i>`;
+        } else if (result.confidence > 0.9) {
             confidencePill.style.color = 'var(--success-color)';
             confidencePill.innerHTML = `<span id="confidenceScore">${confidencePercentage}%</span> <i class="fas fa-check-circle"></i>`;
         } else if (result.confidence > 0.7) {
@@ -357,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confidencePill.style.color = 'var(--error-color)';
             confidencePill.innerHTML = `<span id="confidenceScore">${confidencePercentage}%</span> <i class="fas fa-exclamation-circle"></i>`;
         }
-
+    
         // Buat bar chart untuk probabilitas
         probBars.innerHTML = '';
         const classIcons = {
@@ -365,59 +368,53 @@ document.addEventListener('DOMContentLoaded', function () {
             'Sandal': '<i class="fas fa-shoe-prints fa-flip-vertical"></i>',
             'Shoe': '<i class="fas fa-running"></i>'
         };
-
+    
         const classColors = {
             'Boot': 'boot-bar',
             'Sandal': 'sandal-bar',
             'Shoe': 'shoe-bar'
         };
-
-        // Urutkan probabilitas dari tertinggi ke terendah
+    
         const sortedProbabilities = Object.entries(result.probabilities)
             .sort((a, b) => b[1] - a[1]);
-
+    
         for (const [className, probability] of sortedProbabilities) {
             const percentage = (probability * 100).toFixed(2);
-
-            // Container untuk bar
+    
             const barContainer = document.createElement('div');
             barContainer.className = 'prob-bar';
-
-            // Label untuk bar
+    
             const barLabel = document.createElement('div');
             barLabel.className = 'prob-bar-label';
             barLabel.innerHTML = `${classIcons[className] || ''} ${className}`;
             barContainer.appendChild(barLabel);
-            
-            // Percentage label
+    
             const percentageLabel = document.createElement('div');
             percentageLabel.className = 'prob-percentage';
             percentageLabel.textContent = `${percentage}%`;
-
-            // Container untuk bar dan percentage
+    
             const barWrapper = document.createElement('div');
             barWrapper.className = 'prob-bar-wrapper';
-
-            // Bar fill
+    
             const barFill = document.createElement('div');
             barFill.className = `prob-bar-fill ${classColors[className] || ''}`;
-            barFill.style.width = '0%'; // Mulai dari 0 untuk animasi
-
-            // Tambahkan ke DOM
+            barFill.style.width = '0%';
+    
             barWrapper.appendChild(barFill);
             barLabel.appendChild(percentageLabel);
             barContainer.appendChild(barWrapper);
             probBars.appendChild(barContainer);
-
-            // Animasi bar fill
+    
             setTimeout(() => {
                 barFill.style.width = `${percentage}%`;
             }, 100);
         }
-
+    
         // Update interpretasi
         let interpretationHTML = '';
-        if (result.confidence > 0.9) {
+        if (result.predicted_class === "Unknown") {
+            interpretationHTML = `<strong>Model tidak yakin</strong> dengan prediksi. Gambar ini tidak cocok dengan kategori yang tersedia dan diklasifikasikan sebagai <span class="highlight">Unknown</span>.`;
+        } else if (result.confidence > 0.9) {
             interpretationHTML = `<strong>Model sangat yakin</strong> bahwa gambar ini adalah <span class="highlight">${result.predicted_class}</span> dengan tingkat keyakinan yang sangat tinggi.`;
         } else if (result.confidence > 0.8) {
             interpretationHTML = `<strong>Model cukup yakin</strong> bahwa gambar ini adalah <span class="highlight">${result.predicted_class}</span>, namun tidak 100% yakin.`;
@@ -427,17 +424,14 @@ document.addEventListener('DOMContentLoaded', function () {
             interpretationHTML = `<strong>Model tidak yakin</strong> dengan prediksi. Gambar mungkin bukan alas kaki klasik atau memiliki tampilan yang tidak jelas.`;
         }
         interpretationText.innerHTML = interpretationHTML;
-
-        // Sembunyikan loading dan tampilkan hasil
+    
         loadingIndicator.style.display = 'none';
         resultContent.style.display = 'block';
-
-        // Tambahkan animasi fade-in untuk hasil
         resultContent.classList.add('fade-in');
-
-        // Tampilkan notifikasi
+    
         showNotification('✅ Analisis selesai!');
     }
+    
 
     // Fungsi untuk memperbarui icon pada prediction badge
     function updatePredictionIcon(predictedClass) {

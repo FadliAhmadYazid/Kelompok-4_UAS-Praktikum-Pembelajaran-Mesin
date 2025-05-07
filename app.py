@@ -86,30 +86,35 @@ def preprocess_image(image):
     return image_array
 
 # Fungsi untuk memprediksi gambar
-def predict_image(image_array):
+def predict_image(image_array, threshold=0.7):
     if model is None:
         raise HTTPException(status_code=500, detail="Model belum dimuat")
-    
+
     # Lakukan prediksi
     predictions = model.predict(image_array)
+    
     # Dapatkan indeks kelas dengan probabilitas tertinggi
     class_idx = np.argmax(predictions[0])
+    
     # Dapatkan nilai confidence
     confidence = float(predictions[0][class_idx])
     
     # Ubah predictions menjadi list Python untuk JSON serialization
     all_probabilities = [float(p) for p in predictions[0]]
     
-    # Mapping indeks ke label
-    predicted_class = class_mapping[class_idx]
+    # Tentukan kelas prediksi
+    if confidence < threshold:
+        predicted_class = 'Unknown'
+    else:
+        predicted_class = class_mapping[class_idx]
     
     return {
         "predicted_class": predicted_class,
         "confidence": confidence,
         "probabilities": {
-            class_mapping[i]: all_probabilities[i] 
-            for i in range(len(all_probabilities))
-        }
+            class_mapping[i]: all_probabilities[i] for i in range(len(all_probabilities))
+        },
+        "raw_probabilities": all_probabilities
     }
 
 # Route untuk halaman utama
