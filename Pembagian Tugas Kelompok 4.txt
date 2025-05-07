@@ -1,0 +1,51 @@
+PEMBAGIAN TUGAS KELOMPOK 4 - UAS PRAKTIKUM PEMBELAJARAN MESIN A
+===============================================================================
+
+PROYEK: KLASIFIKASI ALAS KAKI DENGAN CONVOLUTIONAL NEURAL NETWORK
+KELAS: A
+
+ANGGOTA KELOMPOK:
+1. Nurul Uzratun Nashriyyah - 22081070010030
+2. Alhusna Hanifah - 2208107010060
+3. Rizky Yusmansyah- 2208107010024
+4. Zahra Zafira - 2208107010040
+5. Fadli Ahmad Yazid - 2208107010032
+
+===============================================================================
+DETAIL PEMBAGIAN TUGAS:
+===============================================================================
+
+1. Nurul Uzratun Nashriyyah
+   - Pengumpulan dan preprocessing dataset
+   - Exploratory Data Analysis (EDA)
+   - Pembuatan visualisasi distribusi data
+   - Dokumentasi hasil analisis data
+   - Penulisan markdown pada notebook
+
+2. Alhusna Hanifah
+   - Perancangan arsitektur model CNN
+   - Konfigurasi hyperparameter model
+   - Implementasi data augmentasi
+   - Eksperimen dengan berbagai konfigurasi model
+   - Evaluasi performa model
+
+3. Rizky Yusmansyah 
+   - Implementasi pembuatan pipeline pelatihan
+   - Proses pelatihan model
+   - Evaluasi performa model pada data test
+   - Pembuatan confusion matrix dan classification report
+   - Implementasi penyimpanan model terlatih (.h5)
+
+4. Zahra Zafira
+   - Pengembangan backend API dengan FastAPI
+   - Integrasi model CNN ke dalam aplikasi web
+   - Implementasi fungsi preprocessing gambar input
+   - Konfigurasi server deployment
+   - Pengujian API dan debugging
+
+5. Fadli Ahmad Yazid
+   - Desain antarmuka pengguna (UI) website
+   - Implementasi frontend dengan HTML, CSS, dan JavaScript
+   - Implementasi fitur upload gambar
+   - Visualisasi hasil prediksi (probabilitas per kelas)
+   - Pengujian responsivitas dan user experience
