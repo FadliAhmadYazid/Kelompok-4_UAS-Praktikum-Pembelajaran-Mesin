@@ -40,6 +40,7 @@ project/
 │       └── placeholder.png
 ├── templates/
 │   └── index.html
+├── test_images/
 └── model/
     └── model_2_cnn_shoe_sandal_boot.h5
 ```
